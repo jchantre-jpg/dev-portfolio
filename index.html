@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Juliana Chantre Astudillo — Full Stack &amp; IA</title>
+  <meta name="description" content="Ingeniera Informática y desarrolladora Full Stack. Creadora de YuweAI. Portafolio, proyectos y contacto." />
+  <meta property="og:title" content="Juliana Chantre Astudillo — Full Stack & IA" />
+  <meta property="og:description" content="Portafolio profesional: YuweAI, experiencia Full Stack, CV y contacto." />
+  <meta property="og:image" content="foto.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #0c2424;
+      --ink-soft: #1a3a3a;
+      --moss: #2f6b66;
+      --mist: #c5d9d4;
+      --fog: #e4efeb;
+      --sand: #f3f7f5;
+      --accent: #c45c26;
+      --line: rgba(12, 36, 36, 0.12);
+      --max: 1100px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Literata", Georgia, serif;
+      color: var(--ink);
+      background: var(--sand);
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
+    a { color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    .nav {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 40;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.4rem;
+      background: linear-gradient(180deg, rgba(243,247,245,0.92), rgba(243,247,245,0.55) 70%, transparent);
+      backdrop-filter: blur(8px);
+    }
+    .nav-brand {
+      font-family: "Syne", sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.1rem;
+      list-style: none;
+      font-family: "Syne", sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .nav-links a {
+      text-decoration: none;
+      opacity: 0.72;
+      transition: opacity 0.25s ease;
+    }
+    .nav-links a:hover { opacity: 1; }
+    .nav-cta {
+      display: none;
+      font-family: "Syne", sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 2px;
+    }
+
+    /* —— Hero: one composition, brand first, full-bleed photo —— */
+    .hero {
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      position: relative;
+      color: #f7fbf9;
+    }
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 18%;
+      transform: scale(1.04);
+      animation: heroZoom 12s ease-out forwards;
+    }
+    .hero-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(8, 28, 28, 0.25) 0%, rgba(8, 28, 28, 0.15) 35%, rgba(8, 28, 28, 0.78) 100%),
+        linear-gradient(90deg, rgba(8, 28, 28, 0.55) 0%, transparent 55%);
+    }
+    .hero-copy {
+      position: relative;
+      z-index: 1;
+      align-self: end;
+      padding: 6.5rem 1.4rem 2.2rem;
+      max-width: var(--max);
+      margin: 0 auto;
+      width: 100%;
+      animation: riseIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+    .hero h1 {
+      font-family: "Syne", sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.6rem, 9vw, 5.4rem);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      max-width: 11ch;
+    }
+    .hero-lead {
+      margin-top: 1.1rem;
+      max-width: 34rem;
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      color: rgba(247, 251, 249, 0.9);
+    }
+    .hero-actions {
+      margin-top: 1.6rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1rem;
+      align-items: center;
+    }
+    .btn {
+      font-family: "Syne", sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.03em;
+      text-decoration: none;
+      padding: 0.85rem 1.25rem;
+      border: 1.5px solid transparent;
+      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-fill {
+      background: var(--accent);
+      color: #fff;
+    }
+    .btn-fill:hover { background: #a84c1d; }
+    .btn-ghost {
+      background: transparent;
+      color: #f7fbf9;
+      border-color: rgba(247, 251, 249, 0.45);
+    }
+    .btn-ghost:hover {
+      border-color: #f7fbf9;
+      background: rgba(247, 251, 249, 0.08);
+    }
+    .hero-scroll {
+      position: relative;
+      z-index: 1;
+      padding: 0 1.4rem 1.4rem;
+      font-family: "Syne", sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      animation: pulseSoft 2.4s ease-in-out infinite;
+    }
+
+    section {
+      padding: 4.5rem 1.4rem;
+    }
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+    .section-kicker {
+      font-family: "Syne", sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--moss);
+      margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-family: "Syne", sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.7rem, 4vw, 2.5rem);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      max-width: 18ch;
+    }
+    .section-text {
+      max-width: 40rem;
+      font-size: 1.05rem;
+      color: var(--ink-soft);
+    }
+
+    .about {
+      background:
+        radial-gradient(ellipse 80% 60% at 100% 0%, rgba(47, 107, 102, 0.12), transparent 55%),
+        var(--fog);
+    }
+    .about-grid {
+      display: grid;
+      gap: 2.5rem;
+      align-items: start;
+    }
+    @media (min-width: 820px) {
+      .about-grid { grid-template-columns: 1.2fr 0.8fr; gap: 3.5rem; }
+      .nav-cta { display: inline-block; }
+      .nav-links { margin-right: 1.5rem; }
+    }
+    .about-meta {
+      display: grid;
+      gap: 1.1rem;
+      font-family: "Syne", sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .about-meta div {
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--line);
+    }
+    .about-meta span {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--moss);
+      margin-bottom: 0.25rem;
+      font-weight: 700;
+    }
+
+    .projects { background: var(--sand); }
+    .project-feature {
+      margin-top: 2rem;
+      display: grid;
+      gap: 1.5rem;
+      padding: 1.6rem 0 0;
+      border-top: 1px solid var(--line);
+    }
+    @media (min-width: 800px) {
+      .project-feature {
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 2.5rem;
+        align-items: end;
+      }
+    }
+    .project-feature h3 {
+      font-family: "Syne", sans-serif;
+      font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.6rem;
+    }
+    .project-feature p { color: var(--ink-soft); margin-bottom: 0.85rem; }
+    .project-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      font-family: "Syne", sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+    .project-links a {
+      text-decoration: none;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 2px;
+    }
+    .project-stack {
+      font-family: "Syne", sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--moss);
+      letter-spacing: 0.02em;
+    }
+    .project-side {
+      background: linear-gradient(145deg, var(--ink) 0%, var(--ink-soft) 100%);
+      color: #eef6f3;
+      padding: 1.5rem 1.4rem;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      animation: riseIn 1s 0.15s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+    .project-side strong {
+      font-family: "Syne", sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+    .project-side ul {
+      margin: 1rem 0 0 1.1rem;
+      font-size: 0.95rem;
+      color: rgba(238, 246, 243, 0.88);
+    }
+    .project-side li { margin-bottom: 0.35rem; }
+
+    .more-projects {
+      margin-top: 2.5rem;
+      display: grid;
+      gap: 1.25rem;
+    }
+    @media (min-width: 700px) {
+      .more-projects { grid-template-columns: 1fr 1fr; gap: 1.5rem 2rem; }
+    }
+    .more-projects article {
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+    .more-projects h4 {
+      font-family: "Syne", sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+    .more-projects p { font-size: 0.95rem; color: var(--ink-soft); }
+
+    .experience { background: var(--fog); }
+    .timeline {
+      margin-top: 2rem;
+      display: grid;
+      gap: 1.5rem;
+    }
+    .job {
+      display: grid;
+      gap: 0.35rem;
+      padding-bottom: 1.4rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .job-head {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.4rem 1rem;
+      align-items: baseline;
+    }
+    .job h3 {
+      font-family: "Syne", sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+    .job-when {
+      font-family: "Syne", sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--moss);
+      letter-spacing: 0.04em;
+    }
+    .job-org { font-size: 0.95rem; color: var(--ink-soft); }
+
+    .skills { background: var(--sand); }
+    .skill-groups {
+      margin-top: 1.8rem;
+      display: grid;
+      gap: 1.5rem;
+    }
+    @media (min-width: 700px) {
+      .skill-groups { grid-template-columns: repeat(3, 1fr); }
+    }
+    .skill-groups h3 {
+      font-family: "Syne", sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--moss);
+      margin-bottom: 0.6rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .skill-groups ul {
+      list-style: none;
+      font-size: 0.98rem;
+    }
+    .skill-groups li {
+      padding: 0.28rem 0;
+      border-bottom: 1px dashed rgba(12, 36, 36, 0.08);
+    }
+
+    .contact {
+      background:
+        linear-gradient(160deg, var(--ink) 0%, #163836 55%, #1f4a46 100%);
+      color: #eef6f3;
+    }
+    .contact .section-kicker { color: #9dcec6; }
+    .contact .section-title { color: #fff; max-width: 16ch; }
+    .contact .section-text { color: rgba(238, 246, 243, 0.85); }
+    .contact-links {
+      margin-top: 2rem;
+      display: grid;
+      gap: 0.85rem;
+      font-family: "Syne", sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+    .contact-links a {
+      text-decoration: none;
+      width: fit-content;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 3px;
+      transition: opacity 0.2s ease;
+    }
+    .contact-links a:hover { opacity: 0.85; }
+    .contact-row {
+      margin-top: 2.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .contact .btn-ghost {
+      border-color: rgba(238, 246, 243, 0.4);
+      color: #eef6f3;
+    }
+
+    footer {
+      background: #081818;
+      color: rgba(238, 246, 243, 0.55);
+      padding: 1.2rem 1.4rem 1.8rem;
+      font-family: "Syne", sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+    }
+    footer .wrap {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.6rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.in {
+      opacity: 1;
+      transform: none;
+    }
+
+    @keyframes riseIn {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: none; }
+    }
+    @keyframes heroZoom {
+      from { transform: scale(1.08); }
+      to { transform: scale(1.02); }
+    }
+    @keyframes pulseSoft {
+      0%, 100% { opacity: 0.45; }
+      50% { opacity: 0.85; }
+    }
+
+    @media (max-width: 700px) {
+      .nav-links { display: none; }
+      .hero-copy { padding-top: 5.5rem; }
+    }
+
+    @media print {
+      .nav, .hero-scroll { display: none; }
+      .hero { min-height: auto; }
+      .hero-media img { object-position: center 20%; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <a class="nav-brand" href="#top">Juliana Chantre</a>
+    <ul class="nav-links">
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#experiencia">Experiencia</a></li>
+      <li><a href="#habilidades">Skills</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a class="nav-cta" href="https://github.com/jchantre-jpg">CV / PDF</a>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-label="Presentación">
+      <div class="hero-media" aria-hidden="true">
+        <img src="foto.jpg" alt="" width="1200" height="1500" />
+      </div>
+      <div class="hero-copy">
+        <h1>Juliana Chantre Astudillo</h1>
+        <p class="hero-lead">
+          Ingeniera Informática y desarrolladora Full Stack. Construyo productos web con React, Node y Python — y lideré YuweAI, plataforma educativa con mención de honor.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-fill" href="#proyectos">Ver proyectos</a>
+          <a class="btn btn-ghost" href="#contacto">Contactar</a>
+        </div>
+      </div>
+      <p class="hero-scroll">Scroll</p>
+    </section>
+
+    <section class="about" id="sobre">
+      <div class="wrap about-grid reveal">
+        <div>
+          <p class="section-kicker">Sobre mí</p>
+          <h2 class="section-title">Ingeniería con impacto real</h2>
+          <p class="section-text">
+            Diseño, implemento y despliego aplicaciones web con JavaScript/TypeScript, React, Node.js, Python, SQL y Firebase.
+            Creadora de YuweAI: AVI para el aprendizaje del Nasa Yuwe, corpus bilingüe en Zenodo y coautoría en Applied Sciences (MDPI).
+            Curso la Maestría en Inteligencia Artificial (UNIR). Disponible presencial y remoto desde Popayán, Cauca.
+          </p>
+        </div>
+        <div class="about-meta">
+          <div>
+            <span>Ubicación</span>
+            Popayán, Colombia · Remoto
+          </div>
+          <div>
+            <span>Enfoque</span>
+            Full Stack · Software · IA aplicada
+          </div>
+          <div>
+            <span>Formación</span>
+            Ing. Informática · Maestría IA (UNIR)
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="projects" id="proyectos">
+      <div class="wrap reveal">
+        <p class="section-kicker">Portafolio</p>
+        <h2 class="section-title">Proyectos que demuestran cómo trabajo</h2>
+        <p class="section-text">
+          Producto estrella, código público y experiencia profesional — el núcleo de un portafolio de ingeniería de software.
+        </p>
+
+        <article class="project-feature">
+          <div>
+            <h3>YuweAI</h3>
+            <p>
+              Plataforma educativa Full Stack con asistente virtual para el aprendizaje del Nasa Yuwe:
+              diccionario ilustrado, actividades, roles y corpus bilingüe (4.593 registros) publicado en Zenodo.
+              Proyecto de grado con mención de honor.
+            </p>
+            <p class="project-stack">React · Node · Firebase · Python · NLP / AVI</p>
+            <div class="project-links">
+              <a href="https://yuwe-ai.web.app" target="_blank" rel="noopener">Demo en vivo</a>
+              <a href="https://github.com/jchantre-jpg" target="_blank" rel="noopener">GitHub</a>
+              <a href="https://orcid.org/0009-0009-2562-4956" target="_blank" rel="noopener">ORCID / publicación</a>
+            </div>
+          </div>
+          <div class="project-side">
+            <strong>Resultados</strong>
+            <ul>
+              <li>Mención de honor (grado)</li>
+              <li>Corpus abierto en Zenodo</li>
+              <li>Coautoría MDPI Applied Sciences</li>
+              <li>Deploy en Firebase Hosting</li>
+            </ul>
+          </div>
+        </article>
+
+        <div class="more-projects">
+          <article>
+            <h4>Oderlogica — CMS &amp; contenido</h4>
+            <p>
+              Gestión y publicación digital remota. Administración de Joomla/WordPress:
+              módulos, extensiones, estructura y mantenimiento de sitios institucionales.
+            </p>
+          </article>
+          <article>
+            <h4>Más en GitHub</h4>
+            <p>
+              Repositorios, experimentos Full Stack y código de proyectos académicos.
+              El perfil de GitHub es la prueba técnica que acompañan CV y LinkedIn.
+            </p>
+            <div class="project-links" style="margin-top:0.7rem">
+              <a href="https://github.com/jchantre-jpg" target="_blank" rel="noopener">github.com/jchantre-jpg</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="experience" id="experiencia">
+      <div class="wrap reveal">
+        <p class="section-kicker">Experiencia</p>
+        <h2 class="section-title">Trayectoria reciente</h2>
+        <div class="timeline">
+          <article class="job">
+            <div class="job-head">
+              <h3>Especialista en contenidos</h3>
+              <p class="job-when">Ene 2026 — Actual</p>
+            </div>
+            <p class="job-org">Oderlogica Soluciones Software · Remoto</p>
+            <p>Publicación de contenido digital y administración CMS (Joomla / WordPress).</p>
+          </article>
+          <article class="job">
+            <div class="job-head">
+              <h3>Desarrolladora Full Stack</h3>
+              <p class="job-when">Feb 2025 — Sep 2026</p>
+            </div>
+            <p class="job-org">YuweAI · Colegio Mayor del Cauca</p>
+            <p>Producto educativo end-to-end: frontend, backend, datos y despliegue. Mención de honor.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="skills" id="habilidades">
+      <div class="wrap reveal">
+        <p class="section-kicker">Habilidades</p>
+        <h2 class="section-title">Stack y herramientas</h2>
+        <div class="skill-groups">
+          <div>
+            <h3>Frontend</h3>
+            <ul>
+              <li>JavaScript / TypeScript</li>
+              <li>React / React Native</li>
+              <li>HTML / CSS</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Backend &amp; datos</h3>
+            <ul>
+              <li>Node.js / Express</li>
+              <li>Python / Java</li>
+              <li>SQL · Firebase · APIs REST</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Práctica</h3>
+            <ul>
+              <li>Git · Scrum</li>
+              <li>Joomla / WordPress</li>
+              <li>ES nativo · EN intermedio (SENA L3)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contacto">
+      <div class="wrap reveal">
+        <p class="section-kicker">Contacto</p>
+        <h2 class="section-title">Hablemos de tu próximo proyecto o rol</h2>
+        <p class="section-text">
+          Busco roles Full Stack / Ingeniería de Software. Respondo por correo o LinkedIn.
+        </p>
+        <div class="contact-links">
+          <a href="mailto:julianaastudillo06@gmail.com">julianaastudillo06@gmail.com</a>
+          <a href="https://www.linkedin.com/in/juliana-chantre-astudillo" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/jchantre-jpg" target="_blank" rel="noopener">GitHub</a>
+          <a href="tel:+573143562274">+57 314 356 2274</a>
+        </div>
+        <div class="contact-row">
+          <a class="btn btn-fill" href="https://github.com/jchantre-jpg">Abrir CV (PDF)</a>
+          <a class="btn btn-ghost" href="https://yuwe-ai.web.app" target="_blank" rel="noopener">Demo YuweAI</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© <span id="y"></span> Juliana Chantre Astudillo</span>
+      <span>Portafolio · Full Stack · IA</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("in"); }),
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+    );
+    document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+  </script>
+</body>
+</html>
