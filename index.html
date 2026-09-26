@@ -80,62 +80,58 @@
       padding-bottom: 2px;
     }
 
-    /* —— Hero: one composition, brand first, full-bleed photo —— */
+    /* —— Hero: texto | foto a un lado —— */
     .hero {
       min-height: 100vh;
       min-height: 100dvh;
       display: grid;
-      grid-template-rows: 1fr auto;
+      grid-template-columns: 1fr;
       position: relative;
-      color: #f7fbf9;
-    }
-    .hero-media {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-    }
-    .hero-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 18%;
-      transform: scale(1.04);
-      animation: heroZoom 12s ease-out forwards;
-    }
-    .hero-media::after {
-      content: "";
-      position: absolute;
-      inset: 0;
+      color: var(--ink);
       background:
-        linear-gradient(180deg, rgba(8, 28, 28, 0.25) 0%, rgba(8, 28, 28, 0.15) 35%, rgba(8, 28, 28, 0.78) 100%),
-        linear-gradient(90deg, rgba(8, 28, 28, 0.55) 0%, transparent 55%);
+        radial-gradient(ellipse 60% 50% at 0% 100%, rgba(47, 107, 102, 0.14), transparent 55%),
+        linear-gradient(165deg, var(--fog) 0%, var(--sand) 55%, #dce8e4 100%);
+    }
+    @media (min-width: 860px) {
+      .hero {
+        grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+      }
     }
     .hero-copy {
-      position: relative;
-      z-index: 1;
-      align-self: end;
-      padding: 6.5rem 1.4rem 2.2rem;
-      max-width: var(--max);
-      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6.5rem 1.5rem 2.5rem;
+      max-width: 34rem;
       width: 100%;
+      margin: 0 auto 0 0;
+      justify-self: end;
       animation: riseIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+    @media (min-width: 860px) {
+      .hero-copy {
+        padding: 7rem clamp(1.5rem, 4vw, 3.5rem) 3rem clamp(1.5rem, 5vw, 4rem);
+        max-width: none;
+        justify-self: stretch;
+      }
     }
     .hero h1 {
       font-family: "Syne", sans-serif;
       font-weight: 800;
-      font-size: clamp(2.6rem, 9vw, 5.4rem);
-      line-height: 0.95;
+      font-size: clamp(2.4rem, 6.5vw, 4.4rem);
+      line-height: 0.96;
       letter-spacing: -0.03em;
-      max-width: 11ch;
+      color: var(--ink);
+      max-width: 12ch;
     }
     .hero-lead {
-      margin-top: 1.1rem;
-      max-width: 34rem;
-      font-size: clamp(1rem, 2.2vw, 1.2rem);
-      color: rgba(247, 251, 249, 0.9);
+      margin-top: 1.15rem;
+      max-width: 32rem;
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
+      color: var(--ink-soft);
     }
     .hero-actions {
-      margin-top: 1.6rem;
+      margin-top: 1.7rem;
       display: flex;
       flex-wrap: wrap;
       gap: 0.75rem 1rem;
@@ -159,23 +155,51 @@
     .btn-fill:hover { background: #a84c1d; }
     .btn-ghost {
       background: transparent;
-      color: #f7fbf9;
-      border-color: rgba(247, 251, 249, 0.45);
+      color: var(--ink);
+      border-color: rgba(12, 36, 36, 0.28);
     }
     .btn-ghost:hover {
-      border-color: #f7fbf9;
-      background: rgba(247, 251, 249, 0.08);
+      border-color: var(--ink);
+      background: rgba(12, 36, 36, 0.04);
+    }
+    .hero-media {
+      position: relative;
+      min-height: 52vh;
+      order: -1;
+      overflow: hidden;
+      animation: riseIn 1s 0.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+    @media (min-width: 860px) {
+      .hero-media {
+        order: 0;
+        min-height: 100vh;
+        min-height: 100dvh;
+      }
+    }
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 18%;
+      animation: heroZoom 14s ease-out forwards;
     }
     .hero-scroll {
-      position: relative;
-      z-index: 1;
-      padding: 0 1.4rem 1.4rem;
-      font-family: "Syne", sans-serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      opacity: 0.7;
-      animation: pulseSoft 2.4s ease-in-out infinite;
+      display: none;
+    }
+    @media (min-width: 860px) {
+      .hero-scroll {
+        display: block;
+        position: absolute;
+        left: clamp(1.5rem, 5vw, 4rem);
+        bottom: 1.4rem;
+        z-index: 2;
+        font-family: "Syne", sans-serif;
+        font-size: 0.7rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--moss);
+        animation: pulseSoft 2.4s ease-in-out infinite;
+      }
     }
 
     section {
@@ -467,13 +491,14 @@
 
     @media (max-width: 700px) {
       .nav-links { display: none; }
-      .hero-copy { padding-top: 5.5rem; }
+      .hero-copy { padding-top: 1.2rem; }
+      .hero-media { min-height: 46vh; }
     }
 
     @media print {
       .nav, .hero-scroll { display: none; }
-      .hero { min-height: auto; }
-      .hero-media img { object-position: center 20%; }
+      .hero { min-height: auto; grid-template-columns: 1.2fr 0.8fr; }
+      .hero-media { order: 0; min-height: 280px; }
     }
   </style>
 </head>
@@ -491,9 +516,6 @@
 
   <main id="top">
     <section class="hero" aria-label="Presentación">
-      <div class="hero-media" aria-hidden="true">
-        <img src="foto.jpg" alt="" width="1200" height="1500" />
-      </div>
       <div class="hero-copy">
         <h1>Juliana Chantre Astudillo</h1>
         <p class="hero-lead">
@@ -503,6 +525,9 @@
           <a class="btn btn-fill" href="#proyectos">Ver proyectos</a>
           <a class="btn btn-ghost" href="#contacto">Contactar</a>
         </div>
+      </div>
+      <div class="hero-media">
+        <img src="foto.jpg" alt="Juliana Chantre Astudillo" width="1200" height="1500" />
       </div>
       <p class="hero-scroll">Scroll</p>
     </section>
